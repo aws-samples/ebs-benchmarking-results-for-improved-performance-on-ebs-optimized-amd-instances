@@ -26,7 +26,7 @@ I created a provisioned IOPs volume for the same to make sure that my volume sup
 
 $ sudo install fio
 
-Refer the Man page for fio tool here: [fio] (https://linux.die.net/man/1/fio) 
+Refer the Man page for fio tool here: [fio](https://linux.die.net/man/1/fio) 
 
 
 5.Now issue the below commands to verify that the the secondary block is attached, a File system is created and is mounted on /mnt
@@ -148,7 +148,7 @@ Jobs: 16 (f=16): [w(16)][18.3%][w=625MiB/s][w=40.0k IOPS][eta 02m:27s]
 Jobs: 16 (f=16): [w(16)][18.9%][w=625MiB/s][w=40.0k IOPS][eta 02m:26s]
 Jobs: 16 (f=16): [w(16)][100.0%][w=625MiB/s][w=40.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=11196: Wed Jun 14 07:09:40 2023
-**write: IOPS=40.0k**, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
+**_write:IOPS=40.0k_** , BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
 clat (usec): min=233, max=2233, avg=398.84, stdev=47.13
 lat (usec): min=233, max=2233, avg=399.02, stdev=47.12
 clat percentiles (usec):
@@ -214,7 +214,7 @@ Disk stats (read/write):
   nvme1n1: ios=0/7207921, merge=0/0, ticks=0/2809425, in_queue=2809425, util=99.98%
 
 ```
-These values align with the recent improvements in the performance in these EBS optimized instances link
+These values align with the recent improvements in the performance in these EBS optimized instances [link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html)
 
 
 Did the same benchmarking test on a **m5a.xlarge** instance and the result was that the maximum Write IOPs it could reach was 16k 
