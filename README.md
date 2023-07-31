@@ -127,7 +127,7 @@ As you can see the IOPs has gone to 40.1K.
 
 
 
-The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below:
+**The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below**
 -----------------
 
 Starting 16 processes
