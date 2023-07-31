@@ -175,7 +175,7 @@ WRITE: bw=626MiB/s (656MB/s), 626MiB/s-626MiB/s (656MB/s-656MB/s), io=110GiB (11
 Disk stats (read/write):
 nvme1n1: ios=0/7203049, merge=0/6, ticks=0/2811165, in_queue=2811164, util=99.99%
 
-The same results for a R6a.xlarge instance for random read operations is given below 
+The same results for a R6a.xlarge instance for random write operations is given below 
 
 --------------
 sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
@@ -216,103 +216,9 @@ Disk stats (read/write):
 
 These values align with the recent improvements in the performance in these EBS optimized instances link
 
-Did the same benchmarking test on a m5a.xlarge instance and noticed that the 
+Did the same benchmarking test on a m5a.xlarge instance and the result was that the maximum Write IOPs it could reach was 16k 
 
-
-C6a.xlarge
-
-sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randread --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap 
-fio_test_file: (g=0): rw=randread, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
-...
-fio-3.32
-Starting 16 processes
-Jobs: 16 (f=16): [r(16)][91.7%][r=571MiB/s][r=36.6k IOPS][eta 00m:15s]
-Jobs: 16 (f=16): [r(16)][92.2%][r=571MiB/s][r=36.6k IOPS][eta 00m:14s]
-Jobs: 16 (f=16): [r(16)][100.0%][r=580MiB/s][r=37.1k IOPS][eta 00m:00s]
-fio_test_file: (groupid=0, jobs=16): err= 0: pid=26589: Mon Jul 17 09:57:13 2023
-  read: IOPS=37.1k, BW=580MiB/s (608MB/s)(102GiB/180001msec)
-    clat (usec): min=304, max=2878, avg=430.56, stdev=58.71
-     lat (usec): min=304, max=2878, avg=430.62, stdev=58.72
-    clat percentiles (usec):
-     |  1.00th=[  343],  5.00th=[  359], 10.00th=[  367], 20.00th=[  379],
-     | 30.00th=[  392], 40.00th=[  408], 50.00th=[  424], 60.00th=[  437],
-     | 70.00th=[  453], 80.00th=[  478], 90.00th=[  506], 95.00th=[  537],
-     | 99.00th=[  603], 99.50th=[  627], 99.90th=[  709], 99.95th=[  758],
-     | 99.99th=[  947]
-   bw (  KiB/s): min=575200, max=608544, per=100.00%, avg=593986.94, stdev=381.89, samples=5744
-   iops        : min=35950, max=38034, avg=37124.19, stdev=23.87, samples=5744
-  lat (usec)   : 500=87.62%, 750=12.33%, 1000=0.05%
-  lat (msec)   : 2=0.01%, 4=0.01%
-  cpu          : usr=0.48%, sys=1.20%, ctx=6678833, majf=0, minf=205
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=6678768,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=580MiB/s (608MB/s), 580MiB/s-580MiB/s (608MB/s-608MB/s), io=102GiB (109GB), run=180001-180001msec
-
-Disk stats (read/write):
-  nvme1n1: ios=6674897/0, merge=0/0, ticks=2815694/0, in_queue=2815694, util=100.00%
-
-
-m6a.xlarge 
-
-sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randread --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
-fio_test_file: (g=0): rw=randread, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
-...
-fio-3.32
-Starting 16 processes
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-fio_test_file: Laying out IO file (1 file / 1024MiB)
-Jobs: 16 (f=16): [r(16)][53.6%][r=524MiB/s][r=33.6k IOPS][eta 01m:24s]
-Jobs: 16 (f=16): [r(16)][54.1%][r=522MiB/s][r=33.4k IOPS][eta 01m:23s]
-Jobs: 16 (f=16): [r(16)][100.0%][r=523MiB/s][r=33.5k IOPS][eta 00m:00s]
-fio_test_file: (groupid=0, jobs=16): err= 0: pid=25238: Mon Jul 17 10:09:48 2023
-  read: IOPS=33.4k, BW=523MiB/s (548MB/s)(91.9GiB/180001msec)
-    clat (usec): min=242, max=3994, avg=477.69, stdev=53.25
-     lat (usec): min=242, max=3994, avg=477.77, stdev=53.25
-    clat percentiles (usec):
-     |  1.00th=[  400],  5.00th=[  416], 10.00th=[  424], 20.00th=[  437],
-     | 30.00th=[  445], 40.00th=[  453], 50.00th=[  465], 60.00th=[  478],
-     | 70.00th=[  498], 80.00th=[  519], 90.00th=[  553], 95.00th=[  578],
-     | 99.00th=[  627], 99.50th=[  660], 99.90th=[  750], 99.95th=[  807],
-     | 99.99th=[ 1012]
-   bw (  KiB/s): min=525856, max=543712, per=100.00%, avg=535479.35, stdev=181.30, samples=5744
-   iops        : min=32866, max=33982, avg=33467.47, stdev=11.33, samples=5744
-  lat (usec)   : 250=0.01%, 500=71.34%, 750=28.56%, 1000=0.08%
-  lat (msec)   : 2=0.01%, 4=0.01%
-  cpu          : usr=0.42%, sys=1.06%, ctx=6020918, majf=0, minf=211
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=6020853,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-Run status group 0 (all jobs):
-   READ: bw=523MiB/s (548MB/s), 523MiB/s-523MiB/s (548MB/s-548MB/s), io=91.9GiB (98.6GB), run=180001-180001msec
-
-Disk stats (read/write):
-  nvme1n1: ios=6017502/9, merge=0/5, ticks=2824295/3, in_queue=2824298, util=100.00%
-
-  M5a.xlarge
-
-
+----
 sudo fio --directory=/mnt --ioengine=psync --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
 ...
@@ -362,11 +268,11 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   nvme2n2: ios=0/2888503, merge=0/4, ticks=0/2830784, in_queue=2830784, util=100.00%
 
+------
 
 This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors 
 
-Please refer the file writes.txt for the results of random read operations performed on these instances. 
-
+Please refer the read.txt file for the same results for random read operations.
 
 
 
