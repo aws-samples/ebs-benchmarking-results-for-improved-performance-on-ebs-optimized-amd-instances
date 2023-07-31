@@ -124,9 +124,8 @@ nvme2n1: ios=0/7207547, merge=0/6, ticks=0/2786410, in_queue=2786410, util=100.0
 ```
 As you can see the IOPs has gone to 40.1K.
 
+The same steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below
 
-
-The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below
 ```
 Starting 16 processes
 fio_test_file: Laying out IO file (1 file / 0MiB)
@@ -178,6 +177,7 @@ nvme1n1: ios=0/7203049, merge=0/6, ticks=0/2811165, in_queue=2811164, util=99.99
 ```
 The same results for a R6a.xlarge instance for random write operations is given below 
 
+
 ```
 sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
@@ -221,6 +221,7 @@ These values align with the recent improvements in the performance in these EBS 
 Did the same benchmarking test on a m5a.xlarge instance and the result was that the maximum Write IOPs it could reach was 16k 
 
 ```
+
 sudo fio --directory=/mnt --ioengine=psync --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
 ...
