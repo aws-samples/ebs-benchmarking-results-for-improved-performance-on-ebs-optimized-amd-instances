@@ -1,10 +1,10 @@
-#**Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances**#
+**Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances**
 
-On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the announcement . The same  was announced for R6a instance types on June 29th 2023 as per the announcement
+On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the [announcement] ( https://aws.amazon.com/about-aws/whats-new/2023/04/sixth-generation-amazon-ec2-instances-ebs-optimized-instance-performance/) . The same  was announced for R6a instance types on June 29th 2023 as per the [announcement](https://aws.amazon.com/about-aws/whats-new/2023/06/amazon-ec2-r6a-instances-ebs-performance/) 
 
-With the latest enhancements to the Nitro system, we have increased the maximum EBS-optimized IOPS by 60% on the 32xlarge instance size and 50% on all other instance sizes for the C6a, M6aand R6a  instance types. The largest 48xlarge and metal sizes now have a maximum IOPS of 240,000, up from prior 160,000. 
+With the latest enhancements to the Nitro system, we have increased the maximum EBS-optimized IOPS by 60% on the 32xlarge instance size and 50% on all other instance sizes for the C6a, M6a and R6a  instance types. The largest 48xlarge and metal sizes now have a maximum IOPS of 240,000, up from prior 160,000. 
 
-This Article does a benchmarking test on EC2 instances from 3 different instance families c6a, M6a and R6a instance type using the fio tool. I have chosen an xlarge instance types from these families to confirm if they give the same performance as promised. According to the Documentations this instance size should deliver an improved IOPs upto maximum of 40000 IOPs. 
+This Article does a benchmarking test on EC2 instances from 3 different instance families c6a, M6a and R6a compared with a previous generation M5a.xlarge instance type using the fio tool. I have chosen an xlarge instance types from these families to confirm if they give the same performance as promised. According to the Documentations this instance size should deliver an improved IOPs upto maximum of 40000 IOPs. 
 
 I created a provisioned IOPs volume for the same to make sure that my volume supports the required IOPs. The steps are given below in brief for the C6a instance type and the results obtained from the same tests for the M6a , R6a and one of the previous generation instance types m5a instance are added below. 
 
@@ -96,7 +96,7 @@ Jobs: 16 (f=16): [w(16)][34.4%][w=626MiB/s][w=40.0k IOPS][eta 01m:58s
 Jobs: 16 (f=16): [w(16)][35.0%][w=622MiB/s][w=39.8k IOPS][eta 01m:57s]
 Jobs: 16 (f=16): [w(16)][100.0%][w=626MiB/s][w=40.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=5340: Wed Jun 14 06:26:51 2023
-write: IOPS=40.1k, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
+**write: IOPS=40.1k** , BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
 clat (usec): min=196, max=2394, avg=398.38, stdev=60.19
 lat (usec): min=196, max=2395, avg=398.59, stdev=60.20
 clat percentiles (usec):
@@ -124,7 +124,7 @@ nvme2n1: ios=0/7207547, merge=0/6, ticks=0/2786410, in_queue=2786410, util=100.0
 ```
 As you can see the IOPs has gone to 40.1K.
 
-The same steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below
+The same steps were followed on a **m6a.xlarge** instance and was able to find similar results in instance as you can see below
 
 ```
 Starting 16 processes
@@ -148,7 +148,7 @@ Jobs: 16 (f=16): [w(16)][18.3%][w=625MiB/s][w=40.0k IOPS][eta 02m:27s]
 Jobs: 16 (f=16): [w(16)][18.9%][w=625MiB/s][w=40.0k IOPS][eta 02m:26s]
 Jobs: 16 (f=16): [w(16)][100.0%][w=625MiB/s][w=40.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=11196: Wed Jun 14 07:09:40 2023
-write: IOPS=40.0k, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
+**write: IOPS=40.0k**, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
 clat (usec): min=233, max=2233, avg=398.84, stdev=47.13
 lat (usec): min=233, max=2233, avg=399.02, stdev=47.12
 clat percentiles (usec):
@@ -175,8 +175,7 @@ Disk stats (read/write):
 nvme1n1: ios=0/7203049, merge=0/6, ticks=0/2811165, in_queue=2811164, util=99.99%
 
 ```
-The same results for a R6a.xlarge instance for random write operations is given below 
-
+The same results for a **R6a.xlarge** instance for random write operations is given below 
 
 ```
 sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
@@ -188,7 +187,7 @@ Jobs: 16 (f=16): [w(16)][34.1%][w=625MiB/s][w=40.0k IOPS][eta 01m:58s]
 Jobs: 16 (f=16): [w(16)][35.0%][w=625MiB/s][w=40.0k IOPS][eta 01m:57s]
 Jobs: 16 (f=16): [w(16)][100.0%][w=626MiB/s][w=40.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=25747: Mon Jul 31 10:06:55 2023
-  write: IOPS=40.1k, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
+  **write: IOPS=40.1k**, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
     clat (usec): min=272, max=1587, avg=398.49, stdev=37.56
      lat (usec): min=273, max=1588, avg=398.67, stdev=37.56
     clat percentiles (usec):
@@ -218,7 +217,7 @@ Disk stats (read/write):
 These values align with the recent improvements in the performance in these EBS optimized instances link
 
 
-Did the same benchmarking test on a m5a.xlarge instance and the result was that the maximum Write IOPs it could reach was 16k 
+Did the same benchmarking test on a **m5a.xlarge** instance and the result was that the maximum Write IOPs it could reach was 16k 
 
 ```
 
@@ -245,7 +244,7 @@ fio_test_file: Laying out IO file (1 file / 1024MiB)
 fio_test_file: Laying out IO file (1 file / 1024MiB)
 Jobs: 16 (f=16): [w(16)][100.0%][w=250MiB/s][w=16.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=27178: Mon Jul 17 11:31:25 2023
-  write: IOPS=16.0k, BW=250MiB/s (263MB/s)(44.0GiB/180002msec); 0 zone resets
+  **write: IOPS=16.0k**, BW=250MiB/s (263MB/s)(44.0GiB/180002msec); 0 zone resets
     clat (usec): min=268, max=15796, avg=996.46, stdev=182.05
      lat (usec): min=268, max=15797, avg=996.85, stdev=182.05
     clat percentiles (usec):
