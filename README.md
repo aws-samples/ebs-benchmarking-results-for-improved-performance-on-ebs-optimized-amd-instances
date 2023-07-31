@@ -96,7 +96,7 @@ Jobs: 16 (f=16): [w(16)][34.4%][w=626MiB/s][w=40.0k IOPS][eta 01m:58s
 Jobs: 16 (f=16): [w(16)][35.0%][w=622MiB/s][w=39.8k IOPS][eta 01m:57s]
 Jobs: 16 (f=16): [w(16)][100.0%][w=626MiB/s][w=40.0k IOPS][eta 00m:00s]
 fio_test_file: (groupid=0, jobs=16): err= 0: pid=5340: Wed Jun 14 06:26:51 2023
-**write: IOPS=40.1k** , BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
+**write: IOPS=40.1k**, BW=626MiB/s (656MB/s)(110GiB/180001msec); 0 zone resets
 clat (usec): min=196, max=2394, avg=398.38, stdev=60.19
 lat (usec): min=196, max=2395, avg=398.59, stdev=60.20
 clat percentiles (usec):
@@ -272,7 +272,7 @@ Disk stats (read/write):
 
 ```
 
-This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors. All new instances in the C6a , R6a and M6a instances starting will utilize this performance increase at no additional cost. For existing instances, you can simply stop and start your instances to enable this performance increase.
+This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors. All new instances in the C6a , R6a and M6a instance families will utilize this performance increase at no additional cost. For existing instances, you can simply stop and start your instances to enable this performance increase.
 
 Please refer the read.txt file for the same results for random read operations on these instance types. 
 
