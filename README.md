@@ -11,13 +11,14 @@ I created a provisioned IOPs volume for the same to make sure that my volume sup
 <img width="452" alt="image" src="https://github.com/aws-samples/ebs-benchmarking-results-for-improved-performance-on-ebs-optimized-amd-instances/assets/117374837/c391a92c-85fe-4104-abb5-093bb2d0e6f4">
 
  
-3.	Create an IO2 volume with PIOPS greater than 50000 as we are doing tests on a c6a.xlarge instance type to prove it offers 40000 IOPs. Make sure that it is created in the same AZ as that of the instance. Then attach it to the instance as secondary volume.
+2.	Create an IO2 volume with PIOPS greater than 50000 as we are doing tests on a c6a.xlarge instance type to prove it offers 40000 IOPs. Make sure that it is created in the same AZ as that of the instance. Then attach it to the instance as secondary volume.
  
 <img width="452" alt="image" src="https://github.com/aws-samples/ebs-benchmarking-results-for-improved-performance-on-ebs-optimized-amd-instances/assets/117374837/4811a6d2-81b9-4154-8004-a50405a854c6">
 
-4. Then attach it to the instance as secondary volume.
+3. Then attach it to the instance as secondary volume.
 
- 
+ <img width="452" alt="image" src="https://github.com/aws-samples/ebs-benchmarking-results-for-improved-performance-on-ebs-optimized-amd-instances/assets/117374837/fc8489aa-22ea-4f81-a893-d0f44ff3bc39">
+
 
 4.Login to the instance via SSH, SSM, or instance Connect and install the Benchmarking tool fio. Since I used an Amazon Linux2 instance used yum utiliy to install the command:
 
@@ -122,7 +123,7 @@ As you can see the IOPs has gone to 40.1K.
 
 
 
-The steps were followed on a m6a.xlarge instance and you will find similar results in instance as you can see below:
+The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below:
 -----------------
 
 Starting 16 processes
