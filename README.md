@@ -1,4 +1,4 @@
-#Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances#
+#**Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances**#
 
 On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the announcement . The same  was announced for R6a instance types on June 29th 2023 as per the announcement
 
@@ -273,9 +273,9 @@ Disk stats (read/write):
 
 ```
 
-This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors 
+This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors. All new instances in the C6a , R6a and M6a instances starting will utilize this performance increase at no additional cost. For existing instances, you can simply stop and start your instances to enable this performance increase.
 
-Please refer the read.txt file for the same results for random read operations.
+Please refer the read.txt file for the same results for random read operations on these instance types. 
 
 
 
