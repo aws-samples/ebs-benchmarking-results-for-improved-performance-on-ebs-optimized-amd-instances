@@ -1,6 +1,6 @@
 **Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances**
 
-On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the [announcement] ( https://aws.amazon.com/about-aws/whats-new/2023/04/sixth-generation-amazon-ec2-instances-ebs-optimized-instance-performance/) . The same  was announced for R6a instance types on June 29th 2023 as per the [announcement](https://aws.amazon.com/about-aws/whats-new/2023/06/amazon-ec2-r6a-instances-ebs-performance/) 
+On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the [announcement](https://aws.amazon.com/about-aws/whats-new/2023/04/sixth-generation-amazon-ec2-instances-ebs-optimized-instance-performance/) . The same  was announced for R6a instance types on June 29th 2023 as per the [announcement](https://aws.amazon.com/about-aws/whats-new/2023/06/amazon-ec2-r6a-instances-ebs-performance/) 
 
 With the latest enhancements to the Nitro system, we have increased the maximum EBS-optimized IOPS by 60% on the 32xlarge instance size and 50% on all other instance sizes for the C6a, M6a and R6a  instance types. The largest 48xlarge and metal sizes now have a maximum IOPS of 240,000, up from prior 160,000. 
 
