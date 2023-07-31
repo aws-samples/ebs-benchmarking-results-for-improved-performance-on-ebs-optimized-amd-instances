@@ -31,7 +31,7 @@ Refer the Man page for fio tool here: fio
 
 5.Now issue the below commands to verify that the the secondary block is attached, a File system is created and is mounted on /mnt
 
-------
+```
 lsblk
 NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0    8G  0 disk 
@@ -61,7 +61,7 @@ tmpfs           3.1G  420K  3.1G   1% /run
 tmpfs           7.7G     0  7.7G   0% /tmp
 tmpfs           1.6G     0  1.6G   0% /run/user/1000
 /dev/nvme1n1    100G  746M  100G   1% /mnt
-
+```
 
 
 5. Now run fio on the mounted directory with direct random write operations: 
