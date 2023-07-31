@@ -66,6 +66,7 @@ tmpfs           1.6G     0  1.6G   0% /run/user/1000
 
 5. Now run fio on the mounted directory with direct random write operations: 
 
+```
 sudo fio —directory=/mnt —ioengine=psync —name fio_test_file —direct=1 —rw=randwrite —bs=16k —size=16K —numjobs=16 —time_based —runtime=180 —group_reporting —norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
 ...
@@ -120,7 +121,7 @@ WRITE: bw=626MiB/s (656MB/s), 626MiB/s-626MiB/s (656MB/s-656MB/s), io=110GiB (11
 
 Disk stats (read/write):
 nvme2n1: ios=0/7207547, merge=0/6, ticks=0/2786410, in_queue=2786410, util=100.00%
-
+```
 As you can see the IOPs has gone to 40.1K.
 
 
