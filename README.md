@@ -127,8 +127,7 @@ As you can see the IOPs has gone to 40.1K.
 
 
 The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below
------------------
-
+```
 Starting 16 processes
 fio_test_file: Laying out IO file (1 file / 0MiB)
 fio_test_file: Laying out IO file (1 file / 0MiB)
@@ -176,9 +175,10 @@ WRITE: bw=626MiB/s (656MB/s), 626MiB/s-626MiB/s (656MB/s-656MB/s), io=110GiB (11
 Disk stats (read/write):
 nvme1n1: ios=0/7203049, merge=0/6, ticks=0/2811165, in_queue=2811164, util=99.99%
 
+```
 The same results for a R6a.xlarge instance for random write operations is given below 
 
---------------
+```
 sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
 ...
@@ -214,12 +214,13 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   nvme1n1: ios=0/7207921, merge=0/0, ticks=0/2809425, in_queue=2809425, util=99.98%
 
-
+```
 These values align with the recent improvements in the performance in these EBS optimized instances link
+
 
 Did the same benchmarking test on a m5a.xlarge instance and the result was that the maximum Write IOPs it could reach was 16k 
 
-----
+```
 sudo fio --directory=/mnt --ioengine=psync --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
 fio_test_file: (g=0): rw=randwrite, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=psync, iodepth=1
 ...
@@ -269,7 +270,7 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   nvme2n2: ios=0/2888503, merge=0/4, ticks=0/2830784, in_queue=2830784, util=100.00%
 
-------
+```
 
 This shows the performance improvement in the The sixth generation of Amazon EC2 instances powered by AMD processors 
 
