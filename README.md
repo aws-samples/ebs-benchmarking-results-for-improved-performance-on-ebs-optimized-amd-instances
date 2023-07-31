@@ -26,7 +26,7 @@ I created a provisioned IOPs volume for the same to make sure that my volume sup
 
 $ sudo install fio
 
-Refer the Man page for fio tool here: fio 
+Refer the Man page for fio tool here: (fio) [https://linux.die.net/man/1/fio] 
 
 
 5.Now issue the below commands to verify that the the secondary block is attached, a File system is created and is mounted on /mnt
