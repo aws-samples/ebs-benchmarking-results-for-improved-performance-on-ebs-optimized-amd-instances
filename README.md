@@ -1,4 +1,4 @@
-**Amazon EC2 M6a,C6a and R6a instances now support faster Amazon EBS-optimized performance**
+**Benchmarking tests to prove faster Amazon EBS-optimized performance on Amazon EC2 M6a,C6a and R6a instances**
 
 On April 03rd 2023, we announced an improvement for Amazon Elastic Block Store (EBS) performance on Amazon EC2 compute-optimized C6a and general purpose M6a instance types as you can read from the announcement . The same  was announced for R6a instance types on June 29th 2023 as per the announcement
 
@@ -125,7 +125,7 @@ As you can see the IOPs has gone to 40.1K.
 
 
 
-**The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below**
+The steps were followed on a m6a.xlarge instance and was able to find similar results in instance as you can see below
 -----------------
 
 Starting 16 processes
