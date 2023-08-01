@@ -1,0 +1,17 @@
+Please find the options that we have used in the command :
+
+sudo fio --directory=/mnt/ --name fio_test_file --direct=1 --rw=randread --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap 
+
+1)--directory :- Directory where we mounted the secondary volume 
+2)--name=fio_test_file:- Fio will create a file with the specified name to run the test on it.
+3)--direct=1:-true=1 or false=0. If the value is set to 1 (using non-buffered I/O) is fairer for testing as the benchmark will send the I/O directly to the storage subsystem bypassing the OS filesystem cache. The recommended value is always 1.
+4)--readonly option is an extra safety guard to prevent users from accidentally starting a write or trim workload when that is not desired.
+5)--rw=randread:- Specifies the type of I/O pattern, which is random read in this case
+6)--bs=4k :-Defines the block size that the test will be using for generating the I/O. 
+7)--size=1G :- The size of the file on which the Fio will run the benchmarking test.
+8)--numjobs=16 :- The number of threads spawned by the test. By default, each thread is reported separately. To see the results for all threads as a whole, use --group_reporting.
+9)--time_based :-If given, run for the specified runtime duration even if the files are completely read or written. The same workload will be repeated as many times as runtime allows.
+10)--runtime :-The amount of time the test will be running in seconds.
+11)--group_reporting :-To see the results for all threads as a whole, use --group_reporting.
+12)--norandommap :-Normally fio will cover every block of the file when doing random I/O. If this parameter is given, a new offset will be chosen without looking at past I/O history.
+
